@@ -25,7 +25,7 @@ SECRET_KEY = '4o1tf)c!!e%8ivu-c8iu=2b*t9$e-(ql=mazin&3oy&#-hl4&('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -141,12 +141,17 @@ LOGOUT_REDIRECT_URL = "/"
 STATIC_URL = '/static/'
 
 if DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR,'static')
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, "assets"),
         os.path.join(BASE_DIR, "frontend/dist"),
     ]
 else:
    STATIC_ROOT = os.path.join(BASE_DIR,'static')
+   STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "assets"),
+        os.path.join(BASE_DIR, "frontend/dist"),
+   ]   
 # STATIC_ROOT = ""
 
 # Custom User Model
