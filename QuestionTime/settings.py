@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '4o1tf)c!!e%8ivu-c8iu=2b*t9$e-(ql=mazin&3oy&#-hl4&('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -140,11 +140,13 @@ LOGOUT_REDIRECT_URL = "/"
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "assets"),
-    os.path.join(BASE_DIR, "frontend/dist"),
-]
-
+if DEBUG:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "assets"),
+        os.path.join(BASE_DIR, "frontend/dist"),
+    ]
+else:
+   STATIC_ROOT = os.path.join(BASE_DIR,'static')
 # STATIC_ROOT = ""
 
 # Custom User Model
